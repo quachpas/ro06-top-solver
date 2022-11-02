@@ -1,0 +1,3 @@
+[submodule "ro06-projet-a22"]
+	path = ro06-projet-a22
+	url = git@gitlab.utc.fr:quachpas/ro06-projet-a22.git
