@@ -1,0 +1,20 @@
+\newglossaryentry{gls:top}
+{%
+name={structural causal model},
+description={
+Let $\boldsymbol{X}$ be a finite collection of random
+variables. A Structural Causal Model $\mathcal{C}
+	\coloneq(\boldsymbol{S}, P_N)$ consists of a collection $S$ of
+$d$ structural assignments with the form
+$X_i\coloneq f_i(\mathbf{PA}_i, N_i),\quad j=1,\dots,d$.
+$\mathbf{PA}_i\subseteq\left\{X_1,\dots,X_d\right\} \setminus
+	\left\{X_i\right\}$ is the set of the parents of $X_i$.
+$P_N=P_{N_1,\dots,N_d}$ is a joint distribution over the
+jointly independent noise variables $N_i,i=1,\dots,d$. The
+associated directed graph of an SCM is obtained by creating one
+node for each variable $X_i$, and a directed edge from each
+parent in $\mathbf{PA}_i$ to $X_i$.
+The graph is usually assumed to be acyclic
+},
+plural={structural causal models},%
+}

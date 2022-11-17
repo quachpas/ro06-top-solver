@@ -1,0 +1,33 @@
+\documentclass[a4paper]{scrartcl}
+\usepackage[]{csquotes} 
+\usepackage[backend=biber, style=ieee, url=false, eprint=false, isbn=false]{biblatex} 
+\addbibresource{top.bib}
+\usepackage[]{graphicx} 
+\graphicspath{{figures/}}
+\usepackage[]{amsmath,amssymb} 
+\usepackage[]{mathtools} 
+\usepackage[]{unicode-math-xetex}
+\usepackage[french]{babel} 
+
+% Glossary
+\usepackage[acronym, postdot, toc]{glossaries-extra}
+\setabbreviationstyle[acronym]{long-short}
+\loadglsentries[acronym]{acronyms}
+\makenoidxglossaries
+
+\title{RO06 - Tournée de véhicule sélective}
+\subtitle{Team Orienteering Problem} 
+\author{Pascal Quach, Antoine Marquis}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+Le problème de la "course d'orientation"\textemdash \gls{top} \textemdash est
+un problème de tournées de véhicules sélectives.
+
+
+\printnoidxglossary[type=acronym]
+
+\end{document}
