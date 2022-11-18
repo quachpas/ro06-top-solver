@@ -8,6 +8,7 @@
 \usepackage[]{mathtools} 
 \usepackage[]{unicode-math-xetex}
 \usepackage[french]{babel} 
+\usepackage[]{cleveref} 
 
 % Glossary
 \usepackage[acronym, postdot, toc]{glossaries-extra}
@@ -27,7 +28,44 @@
 Le problème de la "course d'orientation"\textemdash \gls{top} \textemdash est
 un problème de tournées de véhicules sélectives.
 
+Nous rappelons en \cref{sec:top-description} la description du problème. En
+\cref{sec:méthodes-exactes}, nous citons diverses méthodes exactes, et en
+\cref{sec:heuristiques} quelques heuristiques. En \cref{sec:implementation},
+nous proposons diverses implémentations et les testons sur des instances
+disponibles en ligne~\cite{cib_test_instances,chao_1993,chao.etal_feb1996,tsiligirides_sep1984}.
+
+\section{Description du problème}%
+\label{sec:top-description}
+
+Soit une flotte de $m$ véhicules, auxquels est associé un temps de parcours
+maximal $T_{\max}$, dont le but est de visiter des clients parmi les $n$
+disponibles, en empruntant un itinéraire $r$ sans redondance. Les véhicules
+sont associés deux dépôts spéciaux, le dépôt de départ, et celui d'arrivée.
+
+Chaque client $i$ est associé à un montant $p_i$ correspondant au profit
+pouvant être récolté une et une seule fois par un véhicule.
+
+L'objectif est de fournir un ensemble d'itinéraires à emprunter pour les $m$
+véhicules de telle sorte que le profit soit maximisé.
+
+\section{Méthodes exactes}%
+\label{sec:méthodes-exactes}
+
+\begin{enumerate}
+	\item \cite{butt.ryan_apr1999}
+	\item \cite{boussier.etal_sep2007} 
+	\item \cite{poggi.etal_2010}
+	\item \cite{dang.etal_may2013}
+	\item \cite{keshtkaran.etal_jan2016}
+\end{enumerate}
+
+\section{Heuristiques}%
+\label{sec:heuristiques}
+
+\section{Implémentation}
+\label{sec:implementation}
 
 \printnoidxglossary[type=acronym]
+\printbibliography
 
 \end{document}
