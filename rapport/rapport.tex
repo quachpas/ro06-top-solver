@@ -1,13 +1,13 @@
 \documentclass[a4paper]{scrartcl}
 \usepackage[]{csquotes} 
-\usepackage[backend=biber, style=ieee, url=false, eprint=false, isbn=false]{biblatex} 
+\usepackage[backend=biber, style=authoryear-icomp, url=false, eprint=false, isbn=false]{biblatex} 
 \addbibresource{top.bib}
 \usepackage[]{graphicx} 
 \graphicspath{{figures/}}
 \usepackage[]{amsmath,amssymb} 
 \usepackage[]{mathtools} 
 \usepackage[]{unicode-math-xetex}
-\usepackage[french]{babel} 
+\usepackage[UKenglish, french]{babel} 
 \usepackage[]{cleveref} 
 
 % Glossary
@@ -32,7 +32,7 @@ Nous rappelons en \cref{sec:top-description} la description du problème. En
 \cref{sec:méthodes-exactes}, nous citons diverses méthodes exactes, et en
 \cref{sec:heuristiques} quelques heuristiques. En \cref{sec:implementation},
 nous proposons diverses implémentations et les testons sur des instances
-disponibles en ligne~\cite{cib_test_instances,chao_1993,chao.etal_feb1996,tsiligirides_sep1984}.
+disponibles en ligne~\parencite{cib_test_instances,chao_1993,chao.etal_feb1996,tsiligirides_sep1984}.
 
 \section{Description du problème}%
 \label{sec:top-description}
@@ -40,23 +40,42 @@ disponibles en ligne~\cite{cib_test_instances,chao_1993,chao.etal_feb1996,tsilig
 Soit une flotte de $m$ véhicules, auxquels est associé un temps de parcours
 maximal $T_{\max}$, dont le but est de visiter des clients parmi les $n$
 disponibles, en empruntant un itinéraire $r$ sans redondance. Les véhicules
-sont associés deux dépôts spéciaux, le dépôt de départ, et celui d'arrivée.
+sont associés à deux dépôts spéciaux, le dépôt de départ $d$, et celui
+d'arrivée $a$.
 
 Chaque client $i$ est associé à un montant $p_i$ correspondant au profit
 pouvant être récolté une et une seule fois par un véhicule.
 
 L'objectif est de fournir un ensemble d'itinéraires à emprunter pour les $m$
-véhicules de telle sorte que le profit soit maximisé.
+véhicules de telle sorte que le profit soit maximisé, sachant que tous les
+clients n'ont pas à être visité, soit par contrainte, soit par préférence.
 
 \section{Méthodes exactes}%
 \label{sec:méthodes-exactes}
 
+Nous listons dans la section suivante les méthodes exactes, algorithmes
+garantissant l'optimalité, dans la littérature. 
+
+La contrainte d'hétérogénéité sur la flotte de véhicules est la suivante~: la
+flotte est dite \textbf{hétérogène} si la contrainte de temps de parcours
+s'applique différemment pour $q$ ensembles de véhicules formant une partition
+de l'ensemble des véhicules.
+
 \begin{enumerate}
-	\item \cite{butt.ryan_apr1999}
-	\item \cite{boussier.etal_sep2007} 
-	\item \cite{poggi.etal_2010}
-	\item \cite{dang.etal_may2013}
-	\item \cite{keshtkaran.etal_jan2016}
+	\item \cite{butt.ryan_apr1999} proposent une méthode utilisant la génération
+		de colonnes et résout le problème hétérogène
+	\item \cite{boussier.etal_sep2007} proposent une méthode dite
+		\foreignlanguage{UKenglish}{Branch and Price} et résout le
+		problème par programmation dynamique
+	\item \cite{poggi.etal_2010} proposent une formulation permettant de
+		résoudre le problème en temps pseudo-polynomial
+	\item \cite{dang.etal_may2013} proposent une méthode polynomiale dite
+		\foreignlanguage{UKenglish}{Branch and Cut} basée sur des
+		familles d'inégalités valides et de relations de dominance 
+	\item \cite{keshtkaran.etal_jan2016} proposent deux méthodes
+		\foreignlanguage{UKenglish}{Branch and Price} et
+		\foreignlanguage{UKenglish}{Branch, Cut and Price} en apportant
+		un nombre de nouvelles contributions aux précédentes méthodes.
 \end{enumerate}
 
 \section{Heuristiques}%
