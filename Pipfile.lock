@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "ba80781d2d59080b7e35f3e1e5e752a62b8b2c02a5348b108011103194128357"
+            "sha256": "cf2902564f6c998491ff124a200e59ef03464012f1a0c3e0a375bbb5755d898d"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -198,6 +198,14 @@
             "markers": "python_version >= '3.6'",
             "version": "==2.1.1"
         },
+        "comm": {
+            "hashes": [
+                "sha256:788a4ec961956c1cb2b0ba3c21f2458ff5757bb2f552032b140787af88d670a3",
+                "sha256:f395ea64f4f261f35ffc2fbf80a62ec071375dac48cd3ea56092711e74dd063e"
+            ],
+            "markers": "python_version >= '3.6'",
+            "version": "==0.1.1"
+        },
         "debugpy": {
             "hashes": [
                 "sha256:34d2cdd3a7c87302ba5322b86e79c32c2115be396f3f09ca13306d8a04fe0f16",
@@ -296,7 +304,7 @@
                 "sha256:637c9635fcf47945ceb91cd7f320234a7be540ded6f3e99a50cb6febdfd1ba8d",
                 "sha256:74137626a64a99c8eb6ae5832d99b3bdd7d29a3850fe2aa80a4126b2a7d949ab"
             ],
-            "markers": "python_version >= '3.6'",
+            "markers": "python_full_version >= '3.6.0'",
             "version": "==0.18.1"
         },
         "jinja2": {
@@ -974,5 +982,14 @@
             "version": "==1.4.2"
         }
     },
-    "develop": {}
+    "develop": {
+        "jupyterlab-vim": {
+            "hashes": [
+                "sha256:c4282beb4a67d21f7126e32cda19f99ed324a1d3fc494560e393fe53f7519a74",
+                "sha256:e3ea4a0f140bb2956fa7c3b75442121cce264930fb94f06e5b0f75ccae2bde2e"
+            ],
+            "index": "pypi",
+            "version": "==0.15.1"
+        }
+    }
 }

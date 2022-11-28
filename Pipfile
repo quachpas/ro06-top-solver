@@ -8,8 +8,10 @@ scipy = "*"
 numpy = "*"
 jupyterlab = "*"
 ortools = "*"
+pulp = "*"
 
 [dev-packages]
+jupyterlab-vim = "*"
 
 [requires]
 python_version = "3.10"
