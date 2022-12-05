@@ -22,6 +22,7 @@ class TestInstance:
         tmax: maximum allocated time per vehicle
         P: profit per client
         C: travel cost (time)
+        X: original point data
     """
     name: str
     N: int
@@ -29,6 +30,7 @@ class TestInstance:
     tmax: float
     P: np.ndarray
     C: np.ndarray
+    X: np.ndarray
     
     def __repr__(self):
         return self.__class__.__name__ + "(" + "name=%s, " % self.name + "N=%d, " % self.N + "m=%d, " % self.m + "tmax=%.2f, " % self.tmax + "P=..., C=...)"
@@ -54,6 +56,7 @@ def read_test_sets(dirpath: Path):
             tmax=tmax,
             P=P,
             C=C,
+            X=X
         )]
         
     return test_dict

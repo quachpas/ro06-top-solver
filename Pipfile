@@ -9,6 +9,8 @@ numpy = "*"
 jupyterlab = "*"
 ortools = "*"
 pulp = "*"
+matplotlib = "*"
+networkx = "*"
 
 [dev-packages]
 jupyterlab-vim = "*"
