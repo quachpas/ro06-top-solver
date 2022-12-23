@@ -8,6 +8,7 @@
 \usepackage[]{mathtools} 
 \usepackage[]{unicode-math-xetex}
 \usepackage[UKenglish, french]{babel} 
+\usepackage[]{hyperref} 
 \usepackage[]{cleveref} 
 
 % Glossary
@@ -97,12 +98,38 @@ d'après~\parencite{keshtkaran.etal_jan2016} sont:
 	\item Un algorithme mémétique~\parencite{bouly.etal_mar2010,dang.etal_2011}
 	\item une méthode inspirée d'optimisation par essaims
 		particulaires~\parencite{dang.etal_sep2013}
-	\item Une méthode augmentée dite de \foreignlanguage{UKenglish}{Large
+	\item Une méthode augmentée dite de \foreignlanguage{UKenglish}{Augmented Large
 		Neighbourhood Search}~\parencite{kim.etal_jun2013}
 \end{enumerate}
 
 \section{Implémentation}
 \label{sec:implementation}
+
+\subsection{Augmented Large Neighbourhood Search}%
+\label{ssec:augmented-large-neighbourhood-search}
+
+Nous présentons dans ces travaux une implémentation partielle des travaux de
+~\cite{kim.etal_jun2013}, en se limitant à l'algorithme de construction d'une
+solution initiale.
+
+Le code est disponible sur le 
+\href{https://gitlab.utc.fr/quachpas/ro06-top-solver/-/blob/main/src/ALNS.ipynb}{dépôt de code}
+\footnote{
+	\href{https://gitlab.utc.fr/quachpas/ro06-top-solver/-/blob/main/src/ALNS.ipynb}
+	{https://gitlab.utc.fr/quachpas/ro06-top-solver/-/blob/main/src/ALNS.ipynb}
+}.
+
+Ci-dessous, un example de solution pour l'instance de problème
+\textquote{p4.3.t}. La meilleure solution affichée correspond à celles trouvées
+dans~\cite{kim.etal_jun2013}.
+
+\begin{figure}[htpb]
+	\centering
+	\includegraphics[width=\textwidth]{alns_p4.3.t.pdf}
+	\caption{Solution proposée pour l'instance \textquote{p4.3.t}}
+	\label{fig:alns}
+\end{figure}
+
 
 \printnoidxglossary[type=acronym]
 \printbibliography
