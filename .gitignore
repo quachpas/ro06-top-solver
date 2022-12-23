@@ -1,3 +1,7 @@
+# Figures output
+*.pdf
+*.ps
+
 # Make
 *.make
 

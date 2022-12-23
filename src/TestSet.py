@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 # coding: utf-8
 
@@ -11,6 +12,8 @@ from glob import glob
 from dataclasses import dataclass, field
 from scipy.spatial import distance
 from pathlib import Path
+import pandas as pd
+
 
 @dataclass
 class TestInstance:
@@ -24,6 +27,7 @@ class TestInstance:
         C: travel cost (time)
         X: original point data
     """
+
     name: str
     N: int
     m: int
@@ -31,13 +35,25 @@ class TestInstance:
     P: np.ndarray
     C: np.ndarray
     X: np.ndarray
-    
-    def __repr__(self):
-        return self.__class__.__name__ + "(" + "name=%s, " % self.name + "N=%d, " % self.N + "m=%d, " % self.m + "tmax=%.2f, " % self.tmax + "P=..., C=...)"
+    best_solution: float
 
-def read_test_sets(dirpath: Path):
+    def __repr__(self):
+        return (
+            self.__class__.__name__
+            + "("
+            + "name=%s, " % self.name
+            + "N=%d, " % self.N
+            + "m=%d, " % self.m
+            + "tmax=%.2f, " % self.tmax
+            + "best_solution=%.2f, " % self.best_solution
+            + "P=..., C=...)"
+        )
+
+
+def read_test_sets(dirpath: Path, filepath: Path):
     test_sets = glob(str(dirpath / "Set*"))
     test_dict = {}
+    best_solutions = read_best_solutions(filepath)
     for filename in glob(str(dirpath / "Set*/*.txt")):
         test_set = Path(filename).parts[-2]
         with open(filename) as f:
@@ -49,32 +65,44 @@ def read_test_sets(dirpath: Path):
             C = distance.squareform(distance.pdist(X))
         if test_set not in test_dict:
             test_dict[test_set] = []
-        test_dict[test_set] += [TestInstance(
-            name=Path(filename).stem,
-            N=N,
-            m=m,
-            tmax=tmax,
-            P=P,
-            C=C,
-            X=X
-        )]
-        
+        name = Path(filename).stem
+        test_dict[test_set] += [
+            TestInstance(
+                name=name,
+                N=N,
+                m=m,
+                tmax=tmax,
+                P=P,
+                C=C,
+                X=X,
+                best_solution=best_solutions[name]
+                if name in best_solutions
+                else np.nan,
+            )
+        ]
+
     return test_dict
 
-def read_Chao():
-    dpath = Path("../ro06-projet-a22/Chao/")
-    if not dpath.exists():
+
+def read_best_solutions(filepath: Path):
+    df = pd.read_csv(filepath).set_index("name").astype(float)
+    return df.to_dict()["solution"]
+
+
+def read_Chao(
+    dpath: Path = Path("../ro06-projet-a22/Chao/"),
+    fpath: Path = Path("../src/best_solutions_kim_et_al_2013.csv"),
+):
+    if not dpath.exists() or not fpath.exists():
         raise FileNotFoundError
-    return read_test_sets(dpath)
+    return read_test_sets(dpath, fpath)
 
-def read_Tsiligirides():
-    dpath = Path("../ro06-projet-a22/Tsiligirides/")
-    if not dpath.exists():
+
+def read_Tsiligirides(
+    dpath: Path = Path("../ro06-projet-a22/Tsiligirides/"),
+    fpath: Path = Path("../src/best_solutions_kim_et_al_2013.csv"),
+):
+    if not dpath.exists() or not fpath.exists():
         raise FileNotFoundError
-    return read_test_sets(dpath)
-
-
-if __name__ == "__main__":
-    Chao = read_test_sets(Path("../ro06-projet-a22/Chao/"))
-    print(Chao["Set_100_234"])
+    return read_test_sets(dpath, fpath)
 
